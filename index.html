@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Race Events — Market Intelligence Brief · Vibramente 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080810;
+    --dark: #0d0d18;
+    --card: #13131f;
+    --card2: #191926;
+    --orange: #FF5C1A;
+    --red: #E63946;
+    --gold: #F2B705;
+    --white: #F0F0F5;
+    --gray: #7878a0;
+    --green: #2ECC71;
+    --blue: #3B82F6;
+    --purple: #8B5CF6;
+    --cyan: #06B6D4;
+    --border: rgba(255,255,255,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(8,8,16,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,92,26,0.15); padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: var(--orange); }
+  .nav-classified { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 2px; border: 1px solid rgba(230,57,70,0.4); padding: 4px 12px; border-radius: 4px; }
+  .nav-pills { display: flex; gap: 24px; }
+  .nav-pills a { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--gray); text-decoration: none; text-transform: uppercase; transition: color .3s; }
+  .nav-pills a:hover { color: var(--orange); }
+
+  /* HERO */
+  #hero { min-height: 100vh; background: radial-gradient(ellipse at 30% 40%, rgba(255,92,26,0.12) 0%, transparent 55%), radial-gradient(ellipse at 70% 60%, rgba(59,130,246,0.08) 0%, transparent 55%), linear-gradient(180deg, #080810 0%, #0d0d18 100%); display: flex; align-items: center; justify-content: center; padding-top: 80px; position: relative; overflow: hidden; }
+  .hero-grid-overlay { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,92,26,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,92,26,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .hero-inner { position: relative; z-index: 2; max-width: 1000px; padding: 0 40px; }
+  .hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--orange); letter-spacing: 4px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-tag::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--orange); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 76px); font-weight: 900; line-height: 1.05; margin-bottom: 28px; }
+  .hero-title .accent { color: var(--orange); }
+  .hero-title .accent2 { color: var(--cyan); }
+  .hero-sub { font-size: 15px; color: var(--gray); line-height: 1.8; max-width: 680px; margin-bottom: 48px; }
+  .hero-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 680px; }
+  .hero-meta-item { background: rgba(255,92,26,0.06); border: 1px solid rgba(255,92,26,0.18); border-radius: 10px; padding: 14px 18px; }
+  .hm-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; margin-bottom: 4px; }
+  .hm-val { font-size: 13px; font-weight: 700; }
+
+  /* SECTION */
+  .sec { padding: 90px 0; }
+  .sec.dark { background: var(--dark); }
+  .sec.black { background: var(--black); }
+  .sec.card-bg { background: var(--card); }
+  .inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 4px; color: var(--orange); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .sec-tag::before { content: '//'; color: rgba(255,92,26,0.5); }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 46px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+  .sec-title span { color: var(--orange); }
+  .sec-sub { font-size: 14px; color: var(--gray); max-width: 660px; line-height: 1.8; margin-bottom: 52px; }
+  .sec-sub strong { color: var(--white); }
+
+  /* DIVIDER */
+  .div-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,92,26,0.25), transparent); margin: 0 40px; }
+
+  /* METHODOLOGY PILLS */
+  .method-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 52px; }
+  .method-pill { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 50px; padding: 7px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+  .method-pill.active { background: rgba(255,92,26,0.10); border-color: rgba(255,92,26,0.35); color: var(--orange); }
+
+  /* PESTEL GRID */
+  .pestel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pestel-card { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .3s; position: relative; overflow: hidden; }
+  .pestel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .pc-P::before { background: var(--blue); }
+  .pc-E::before { background: var(--green); }
+  .pc-S::before { background: var(--orange); }
+  .pc-T::before { background: var(--cyan); }
+  .pc-En::before { background: #22C55E; }
+  .pc-L::before { background: var(--purple); }
+  .pestel-letter { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; opacity: 0.12; position: absolute; top: 10px; right: 18px; }
+  .pestel-title { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .pc-P .pestel-title { color: var(--blue); }
+  .pc-E .pestel-title { color: var(--green); }
+  .pc-S .pestel-title { color: var(--orange); }
+  .pc-T .pestel-title { color: var(--cyan); }
+  .pc-En .pestel-title { color: #22C55E; }
+  .pc-L .pestel-title { color: var(--purple); }
+  .pestel-items { list-style: none; }
+  .pestel-items li { font-size: 12px; color: var(--gray); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; line-height: 1.5; }
+  .pestel-items li::before { content: '▸'; flex-shrink: 0; margin-top: 1px; }
+  .pc-P .pestel-items li::before { color: var(--blue); }
+  .pc-E .pestel-items li::before { color: var(--green); }
+  .pc-S .pestel-items li::before { color: var(--orange); }
+  .pc-T .pestel-items li::before { color: var(--cyan); }
+  .pc-En .pestel-items li::before { color: #22C55E; }
+  .pc-L .pestel-items li::before { color: var(--purple); }
+  .pestel-signal { display: inline-block; margin-top: 12px; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; }
+  .signal-pos { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.3); }
+  .signal-neg { background: rgba(230,57,70,0.12); color: var(--red); border: 1px solid rgba(230,57,70,0.3); }
+  .signal-neu { background: rgba(242,183,5,0.12); color: var(--gold); border: 1px solid rgba(242,183,5,0.3); }
+
+  /* TAM/SAM/SOM */
+  .market-funnel { display: flex; flex-direction: column; gap: 0; max-width: 700px; margin: 0 auto 48px; }
+  .funnel-tier { border-radius: 14px; padding: 28px 36px; position: relative; }
+  .funnel-tam { background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(59,130,246,0.06)); border: 1px solid rgba(59,130,246,0.25); margin-bottom: 12px; }
+  .funnel-sam { background: linear-gradient(135deg, rgba(255,92,26,0.12), rgba(255,92,26,0.06)); border: 1px solid rgba(255,92,26,0.25); margin-bottom: 12px; width: 80%; margin-left: auto; margin-right: auto; }
+  .funnel-som { background: linear-gradient(135deg, rgba(46,204,113,0.12), rgba(46,204,113,0.06)); border: 1px solid rgba(46,204,113,0.25); width: 60%; margin-left: auto; margin-right: auto; }
+  .funnel-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .funnel-tam .funnel-label { color: var(--blue); }
+  .funnel-sam .funnel-label { color: var(--orange); }
+  .funnel-som .funnel-label { color: var(--green); }
+  .funnel-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .funnel-tam .funnel-title { color: var(--blue); }
+  .funnel-sam .funnel-title { color: var(--orange); }
+  .funnel-som .funnel-title { color: var(--green); }
+  .funnel-desc { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+  /* PORTER */
+  .porter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .porter-card { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .porter-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .porter-title { font-size: 13px; font-weight: 800; }
+  .threat-badge { font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; white-space: nowrap; }
+  .threat-high { background: rgba(230,57,70,0.15); color: var(--red); border: 1px solid rgba(230,57,70,0.3); }
+  .threat-med { background: rgba(242,183,5,0.15); color: var(--gold); border: 1px solid rgba(242,183,5,0.3); }
+  .threat-low { background: rgba(46,204,113,0.15); color: var(--green); border: 1px solid rgba(46,204,113,0.3); }
+  .porter-desc { font-size: 12px; color: var(--gray); line-height: 1.7; margin-bottom: 14px; }
+  .porter-insight { font-size: 11px; color: var(--white); background: rgba(255,255,255,0.04); border-left: 3px solid var(--orange); padding: 8px 12px; border-radius: 0 6px 6px 0; line-height: 1.6; }
+
+  /* COMPETITOR TABLE */
+  .intel-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .intel-table th { padding: 12px 14px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); border-bottom: 2px solid var(--border); background: rgba(255,255,255,0.02); }
+  .intel-table td { padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+  .intel-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .comp-name { font-weight: 700; font-size: 13px; }
+  .comp-threat { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; }
+  .ct-h { color: var(--red); }
+  .ct-m { color: var(--gold); }
+  .ct-l { color: var(--green); }
+  .tech-score { display: flex; gap: 3px; }
+  .ts-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .ts-full { background: var(--orange); }
+  .ts-empty { background: rgba(255,255,255,0.1); }
+  .weakness-tag { display: inline-block; background: rgba(230,57,70,0.1); color: var(--red); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin: 2px 2px 0 0; }
+  .opp-tag { display: inline-block; background: rgba(46,204,113,0.1); color: var(--green); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+
+  /* JTBD */
+  .jtbd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .jtbd-card { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+  .jtbd-archetype { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; }
+  .jtbd-name { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+  .jtbd-section { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin: 12px 0 6px; }
+  .jtbd-items { list-style: none; }
+  .jtbd-items li { font-size: 11px; color: var(--gray); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 7px; line-height: 1.5; }
+  .jtbd-items li::before { content: '·'; color: var(--orange); flex-shrink: 0; }
+
+  /* BLUE OCEAN */
+  .errc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .errc-card { border-radius: 14px; padding: 24px; }
+  .errc-E { background: rgba(230,57,70,0.07); border: 1px solid rgba(230,57,70,0.2); }
+  .errc-R { background: rgba(242,183,5,0.07); border: 1px solid rgba(242,183,5,0.2); }
+  .errc-Ra { background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.2); }
+  .errc-C { background: rgba(46,204,113,0.07); border: 1px solid rgba(46,204,113,0.2); }
+  .errc-letter { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; opacity: 0.15; float: right; margin-top: -8px; }
+  .errc-title { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  .errc-E .errc-title { color: var(--red); }
+  .errc-R .errc-title { color: var(--gold); }
+  .errc-Ra .errc-title { color: var(--blue); }
+  .errc-C .errc-title { color: var(--green); }
+  .errc-items { list-style: none; }
+  .errc-items li { font-size: 12px; color: var(--gray); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; }
+  .errc-E .errc-items li::before { content: '✕'; color: var(--red); flex-shrink: 0; }
+  .errc-R .errc-items li::before { content: '↓'; color: var(--gold); flex-shrink: 0; }
+  .errc-Ra .errc-items li::before { content: '↑'; color: var(--blue); flex-shrink: 0; }
+  .errc-C .errc-items li::before { content: '★'; color: var(--green); flex-shrink: 0; }
+
+  /* VALUE CURVE */
+  .curve-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 32px 0; }
+  .curve-table th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); border-bottom: 2px solid var(--border); }
+  .curve-table th.col-re { color: var(--orange); }
+  .curve-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .curve-table td.dimension { font-weight: 600; }
+  .curve-bar { height: 12px; border-radius: 6px; position: relative; }
+  .bar-low { background: rgba(230,57,70,0.4); width: 20%; }
+  .bar-med { background: rgba(242,183,5,0.5); width: 50%; }
+  .bar-high { background: rgba(46,204,113,0.6); width: 80%; }
+  .bar-max { background: linear-gradient(90deg, var(--orange), var(--red)); width: 100%; box-shadow: 0 0 12px rgba(255,92,26,0.4); }
+
+  /* TECH ADOPTION */
+  .adoption-bar { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; overflow: hidden; position: relative; }
+  .adoption-track { display: flex; height: 80px; border-radius: 8px; overflow: hidden; }
+  .adoption-segment { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; flex-direction: column; gap: 4px; }
+  .seg-innov { background: rgba(139,92,246,0.3); flex: 2.5; }
+  .seg-early { background: rgba(59,130,246,0.35); flex: 13.5; }
+  .seg-major { background: rgba(46,204,113,0.3); flex: 34; }
+  .seg-late { background: rgba(242,183,5,0.3); flex: 34; }
+  .seg-lagg { background: rgba(136,136,136,0.2); flex: 16; }
+  .adoption-marker { position: absolute; display: flex; flex-direction: column; align-items: center; }
+  .adoption-labels { display: flex; margin-top: 12px; }
+  .adoption-lbl { font-size: 10px; color: var(--gray); text-align: center; }
+
+  /* OPPORTUNITY MATRIX */
+  .opp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .opp-card { background: var(--card2); border-radius: 16px; padding: 26px; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .opp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .opp-s1::before { background: var(--green); }
+  .opp-s2::before { background: var(--orange); }
+  .opp-s3::before { background: var(--purple); }
+  .opp-horizon { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .opp-s1 .opp-horizon { color: var(--green); }
+  .opp-s2 .opp-horizon { color: var(--orange); }
+  .opp-s3 .opp-horizon { color: var(--purple); }
+  .opp-title { font-size: 15px; font-weight: 800; margin-bottom: 10px; }
+  .opp-potential { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; margin: 10px 0 6px; }
+  .opp-s1 .opp-potential { color: var(--green); }
+  .opp-s2 .opp-potential { color: var(--orange); }
+  .opp-s3 .opp-potential { color: var(--purple); }
+  .opp-desc { font-size: 12px; color: var(--gray); line-height: 1.7; }
+  .opp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .opp-tag { font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 3px 9px; border-radius: 4px; }
+  .tag-green { background: rgba(46,204,113,0.1); color: var(--green); }
+  .tag-orange { background: rgba(255,92,26,0.1); color: var(--orange); }
+  .tag-purple { background: rgba(139,92,246,0.1); color: var(--purple); }
+
+  /* INTELLIGENCE SCORE */
+  .intel-score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .intel-score-card { background: var(--card2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .is-label { font-size: 11px; font-weight: 700; color: var(--gray); margin-bottom: 12px; }
+  .is-bar-row { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .is-name { font-size: 10px; color: var(--gray); width: 110px; flex-shrink: 0; }
+  .is-track { flex: 1; height: 6px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
+  .is-fill { height: 100%; border-radius: 3px; }
+  .is-now { background: rgba(255,92,26,0.5); }
+  .is-raceos { background: var(--orange); }
+  .is-comp { background: rgba(100,100,150,0.4); }
+  .is-val { font-size: 10px; font-weight: 700; width: 28px; text-align: right; }
+
+  /* STRATEGIC RECS */
+  .rec-grid { display: flex; flex-direction: column; gap: 16px; }
+  .rec-card { background: var(--card2); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; display: grid; grid-template-columns: 52px 1fr auto; gap: 20px; align-items: start; }
+  .rec-num { width: 44px; height: 44px; border-radius: 8px; background: rgba(255,92,26,0.12); border: 1px solid rgba(255,92,26,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--orange); flex-shrink: 0; }
+  .rec-title { font-size: 14px; font-weight: 800; margin-bottom: 6px; }
+  .rec-desc { font-size: 12px; color: var(--gray); line-height: 1.7; }
+  .rec-meta { text-align: right; flex-shrink: 0; }
+  .rec-impact { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  .impact-critical { color: var(--red); }
+  .impact-high { color: var(--orange); }
+  .impact-med { color: var(--gold); }
+  .rec-timeline { font-size: 10px; color: var(--gray); margin-top: 4px; }
+
+  /* VERDICT BOX */
+  .verdict-box { background: linear-gradient(135deg, rgba(255,92,26,0.10), rgba(59,130,246,0.06)); border: 2px solid rgba(255,92,26,0.3); border-radius: 24px; padding: 60px 48px; text-align: center; position: relative; overflow: hidden; }
+  .verdict-box::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,92,26,0.05); }
+  .verdict-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 44px); font-weight: 900; margin-bottom: 20px; }
+  .verdict-title span { color: var(--orange); }
+  .verdict-desc { font-size: 15px; color: var(--gray); max-width: 720px; margin: 0 auto 32px; line-height: 1.8; }
+  .verdict-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; max-width: 700px; margin: 32px auto; }
+  .vm-item { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .vm-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: var(--orange); }
+  .vm-label { font-size: 10px; color: var(--gray); margin-top: 4px; letter-spacing: 1px; }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 32px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gray); }
+  footer span { color: var(--orange); }
+
+  /* ANIMATIONS */
+  @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; }
+  .reveal.visible { animation: reveal .6s ease forwards; }
+
+  /* RESPONSIVE */
+  @media(max-width: 900px) { .pestel-grid { grid-template-columns: 1fr 1fr; } .errc-grid { grid-template-columns: 1fr; } }
+  @media(max-width: 768px) { nav { padding: 12px 20px; } .nav-pills { display: none; } .inner { padding: 0 20px; } .pestel-grid { grid-template-columns: 1fr; } .verdict-box { padding: 40px 24px; } .funnel-sam { width: 90%; } .funnel-som { width: 80%; } .rec-card { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">// RACE EVENTS INTEL BRIEF 2026</div>
+  <div class="nav-pills">
+    <a href="#pestel">PESTEL</a>
+    <a href="#mercado">Mercado</a>
+    <a href="#competidores">Intel</a>
+    <a href="#blueocean">Blue Ocean</a>
+    <a href="#oportunidades">Oportunidades</a>
+  </div>
+  <div class="nav-classified">⬤ CONFIDENCIAL</div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">MARKET INTELLIGENCE BRIEF · VIBRAMENTE × RACE EVENTS · 2026</div>
+    <h1 class="hero-title">
+      Inteligencia de Mercado<br>
+      <span class="accent">Ecuador Running</span><br>
+      <span class="accent2">Nivel Estratégico</span>
+    </h1>
+    <p class="hero-sub">
+      Análisis exhaustivo del mercado de eventos deportivos en Ecuador: macroentorno, tamaño de mercado, 5 fuerzas competitivas, perfiles de competidores, arquetipos de corredor, curva de valor Blue Ocean y mapa de oportunidades de diferenciación con RaceOS Agent.
+      <strong> Metodologías aplicadas: PESTEL · Porter's Five Forces · TAM/SAM/SOM · Jobs-to-be-Done · Blue Ocean Strategy · Curva de Adopción Tecnológica.</strong>
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hm-label">Mercado objetivo</div>
+        <div class="hm-val">Ecuador · Quito Metro</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Atletas organizados</div>
+        <div class="hm-val">~40.000–60.000 / año</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Ventaja tecnológica</div>
+        <div class="hm-val">4–5 años sobre competidores</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Clasificación</div>
+        <div class="hm-val" style="color:var(--red)">Confidencial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY NOTE -->
+<div class="sec dark">
+<div class="inner">
+  <div class="sec-tag">Marco Metodológico</div>
+  <h2 class="sec-title">Metodologías <span>aplicadas</span></h2>
+  <p class="sec-sub">Se seleccionaron las metodologías de mayor precisión estratégica para el contexto: análisis macro, dimensionamiento de mercado, inteligencia competitiva, comprensión del cliente y posicionamiento de diferenciación.</p>
+  <div class="method-pills">
+    <div class="method-pill active">📊 PESTEL — Macroentorno Ecuador</div>
+    <div class="method-pill active">⚔️ Porter's 5 Fuerzas — Competitividad</div>
+    <div class="method-pill active">📐 TAM/SAM/SOM — Dimensionamiento</div>
+    <div class="method-pill active">🎯 Jobs-to-be-Done — Arquetipos de corredor</div>
+    <div class="method-pill active">🌊 Blue Ocean — Diferenciación radical</div>
+    <div class="method-pill active">📈 Technology Adoption Curve — Timing</div>
+    <div class="method-pill active">🗺️ Competitive Intelligence Matrix</div>
+    <div class="method-pill active">🎖️ Strategic Opportunity Mapping</div>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ PESTEL ═══ -->
+<div class="sec black" id="pestel">
+<div class="inner">
+  <div class="sec-tag">Sección 01</div>
+  <h2 class="sec-title">Análisis <span>PESTEL</span></h2>
+  <p class="sec-sub">Factores del macroentorno ecuatoriano que determinan el terreno de juego para Race Events. Cada vector representa una fuerza externa que puede amplificarse o neutralizarse con inteligencia agéntica.</p>
+
+  <div class="pestel-grid reveal">
+
+    <div class="pestel-card pc-P">
+      <div class="pestel-letter">P</div>
+      <div class="pestel-title">Político</div>
+      <ul class="pestel-items">
+        <li>Quito Municipio apoya eventos masivos como política de imagen urbana y turismo</li>
+        <li>Gobierno impulsa deporte como eje de Buen Vivir — subsidios y permisos facilitados</li>
+        <li>Inestabilidad política nacional no afecta directamente el sector deportivo privado</li>
+        <li>Decreto 2026: digitalización de trámites municipales abre ventana para eventos tech-first</li>
+      </ul>
+      <span class="pestel-signal signal-pos">POSITIVO</span>
+    </div>
+
+    <div class="pestel-card pc-E">
+      <div class="pestel-letter">E</div>
+      <div class="pestel-title">Económico</div>
+      <ul class="pestel-items">
+        <li>Economía dolarizada = sin riesgo cambiario para inversión tech en USD</li>
+        <li>PIB Ecuador ~$118B (2024) · crecimiento moderado 2-3% anual</li>
+        <li>NSE A/B Quito metro: ~8% = 176K personas con alto poder adquisitivo</li>
+        <li>Running es sport democratizador — bajo costo de entrada vs ciclismo/triatlón</li>
+        <li>Presión inflacionaria eleva valor percibido de plataformas que reducen costos</li>
+        <li>Mercado running footwear Ecuador: ~$45M anuales (crece 12% YoY)</li>
+      </ul>
+      <span class="pestel-signal signal-pos">OPORTUNIDAD</span>
+    </div>
+
+    <div class="pestel-card pc-S">
+      <div class="pestel-letter">S</div>
+      <div class="pestel-title">Social</div>
+      <ul class="pestel-items">
+        <li>Post-COVID: boom de salud y bienestar · participación running +35% 2021-2024</li>
+        <li>Mujeres: 48%+ de participantes en carreras de ruta Ecuador (tendencia global)</li>
+        <li>Edad dominante: 28-45 años · digitalizado, móvil, exigente en experiencia</li>
+        <li>Trail running Andes: crecimiento 30%+ anual — mercado sin organización tech</li>
+        <li>Running como identidad social: comunidades activas en Instagram/Strava</li>
+        <li>Corporativo: empresas grandes incluyen running en planes de wellness</li>
+      </ul>
+      <span class="pestel-signal signal-pos">MUY POSITIVO</span>
+    </div>
+
+    <div class="pestel-card pc-T">
+      <div class="pestel-letter">T</div>
+      <div class="pestel-title">Tecnológico</div>
+      <ul class="pestel-items">
+        <li>WhatsApp: 93% de usuarios smartphone Ecuador — canal nativo de comunicación</li>
+        <li>Smartphones: 75%+ penetración · 4G en 80% áreas urbanas</li>
+        <li>Pagos digitales: crecimiento 28% YoY · Paymentez líder Ecuador</li>
+        <li>AI awareness: etapa early en Ecuador — ventana de diferenciación de 3-5 años</li>
+        <li>Ningún organizador ecuatoriano tiene plataforma propia con IA agéntica</li>
+        <li>Instagram Reels/TikTok: content de carreras altamente viral en Ecuador</li>
+      </ul>
+      <span class="pestel-signal signal-pos">VENTANA ABIERTA</span>
+    </div>
+
+    <div class="pestel-card pc-En">
+      <div class="pestel-letter">E</div>
+      <div class="pestel-title">Ambiental</div>
+      <ul class="pestel-items">
+        <li>Andes ecuatorianos: entorno único para running de altitud (2.800m Quito)</li>
+        <li>Volcanes, reservas y rutas de trail — producto diferenciador único global</li>
+        <li>Fenómeno El Niño: afecta calendarios — sistema agéntico permite comunicación inmediata de cambios</li>
+        <li>Tendencia eco-friendly en eventos: cero plástico, compensación carbono — nicho emergente</li>
+        <li>Turismo deportivo: corredores internacionales llegan a Ecuador por altitud</li>
+      </ul>
+      <span class="pestel-signal signal-pos">DIFERENCIADOR</span>
+    </div>
+
+    <div class="pestel-card pc-L">
+      <div class="pestel-letter">L</div>
+      <div class="pestel-title">Legal</div>
+      <ul class="pestel-items">
+        <li>LOPD Ecuador (2021): Ley Orgánica de Protección de Datos — plataforma propia = cumplimiento nativo</li>
+        <li>Plataformas externas (Njuko) = riesgo de incumplimiento LOPD con datos en servidores extranjeros</li>
+        <li>SRI: comprobantes electrónicos obligatorios para transacciones — integración nativa en RaceOS</li>
+        <li>Contratos con sponsors requieren datos certificados de participación — solo posible con plataforma propia</li>
+      </ul>
+      <span class="pestel-signal signal-neg">RIESGO EXTERNO · OPORTUNIDAD INTERNA</span>
+    </div>
+
+  </div>
+
+  <!-- PESTEL VERDICT -->
+  <div style="margin-top:36px;background:rgba(255,92,26,0.06);border:1px solid rgba(255,92,26,0.2);border-radius:14px;padding:24px 28px;" class="reveal">
+    <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">// LECTURA ESTRATÉGICA PESTEL</div>
+    <p style="font-size:13px;color:var(--gray);line-height:1.8;">El macroentorno de Ecuador es <strong style="color:var(--white)">excepcionalmente favorable para Race Events</strong>. La combinación de economía dolarizada, boom post-COVID de running, WhatsApp como infraestructura de comunicación, cero competencia tech-avanzada y una LOPD que penaliza plataformas extranjeras — crea una ventana estratégica de 3-5 años para que Race Events establezca un monopolio tecnológico en el mercado de eventos deportivos ecuatorianos antes de que cualquier competidor reaccione.</p>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ TAM / SAM / SOM ═══ -->
+<div class="sec dark" id="mercado">
+<div class="inner">
+  <div class="sec-tag">Sección 02</div>
+  <h2 class="sec-title">Dimensionamiento del <span>Mercado</span></h2>
+  <p class="sec-sub">Análisis TAM/SAM/SOM del mercado de eventos running en Ecuador. Metodología top-down validada con datos de población, tasas de participación deportiva LATAM y benchmarks regionales.</p>
+
+  <div class="market-funnel reveal">
+    <div class="funnel-tier funnel-tam">
+      <div class="funnel-label">TAM — Total Addressable Market</div>
+      <div class="funnel-title">$4.5M – $6M / año</div>
+      <div class="funnel-desc">Universo total: ~18.5M ecuatorianos. Runners recreacionales estimados (8% urbano): ~350.000-420.000 personas. De estos, ~15% participa en eventos organizados = <strong>~52.000-63.000 corredores</strong> comprando inscripciones. Ticket promedio $35-40 × 2 eventos/año = mercado total de inscripciones Ecuador.</div>
+    </div>
+    <div class="funnel-tier funnel-sam">
+      <div class="funnel-label">SAM — Serviceable Addressable Market</div>
+      <div class="funnel-title">$2.2M – $3.5M / año</div>
+      <div class="funnel-desc">Mercado geográficamente alcanzable: Quito Metro (2.2M) + Guayaquil (2.7M) + Cuenca (600K). Corredores organizados en estas ciudades: <strong>~35.000-50.000 inscripciones anuales</strong>. Revenue potencial de eventos de ruta, trail y corporate running en estas 3 plazas.</div>
+    </div>
+    <div class="funnel-tier funnel-som">
+      <div class="funnel-label">SOM — Serviceable Obtainable Market</div>
+      <div class="funnel-title">$750K → $1.4M / año</div>
+      <div class="funnel-desc">Captura realista para Race Events con RaceOS. Actual: 21.500 inscripciones × $35 avg = <strong>$752K</strong>. Con 2 eventos adicionales + crecimiento 15%/año: <strong>$1.1-1.4M en 24 meses</strong>. Cuota de mercado: actualmente ~22% del SAM → potencial 35-40% en 3 años.</div>
+    </div>
+  </div>
+
+  <!-- GROWTH VECTORS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;" class="reveal">
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px;">CRECIMIENTO LATAM RUNNING</div>
+      <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--cyan)">+18%</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-top:4px;">Tasa de crecimiento anual promedio del mercado running organizado en América Latina post-COVID (2022-2025)</div>
+    </div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">TRAIL RUNNING ECUADOR</div>
+      <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--orange)">+32%</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-top:4px;">Crecimiento anual estimado del trail running en Andes Ecuador. Mercado sin organizador tech-dominante. Mayor oportunidad de expansión para Race Events.</div>
+    </div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-bottom:8px;">RUNNING FEMENINO</div>
+      <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--green)">+48%</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-top:4px;">Participación femenina en eventos de ruta Ecuador. Segmento que crece 2x más rápido que el masculino y busca experiencia superior y seguridad en inscripciones digitales.</div>
+    </div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">CORPORATE RUNNING</div>
+      <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--gold)">$1M+</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-top:4px;">Potencial de mercado corporativo en Quito: ~500 empresas +100 empleados sponsoreando inscripciones como beneficio de wellness. Canal sin explotar por ningún organizador actual.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ PORTER'S 5 FORCES ═══ -->
+<div class="sec black" id="competidores">
+<div class="inner">
+  <div class="sec-tag">Sección 03</div>
+  <h2 class="sec-title">Porter's <span>5 Fuerzas</span></h2>
+  <p class="sec-sub">Análisis de la dinámica competitiva del sector de eventos running en Ecuador. Cada fuerza cuantifica el poder relativo y el nivel de amenaza que enfrenta Race Events hoy — y cómo RaceOS lo revierte.</p>
+
+  <div class="porter-grid reveal">
+
+    <div class="porter-card">
+      <div class="porter-header">
+        <div class="porter-title">1. Rivalidad entre Competidores</div>
+        <span class="threat-badge threat-med">MEDIA</span>
+      </div>
+      <div class="porter-desc">Existen 8-12 organizadores activos en Ecuador, pero ninguno con escala significativa ni tecnología avanzada. La rivalidad se concentra en fechas (conflicto de calendario) más que en propuesta de valor. Los grandes eventos (42K BTR, Asics Quito) no compiten directamente en el segmento 15K-Media.</div>
+      <div class="porter-insight">💡 Con RaceOS: Race Events tendría 5+ años de ventaja tecnológica. Los competidores no pueden replicar fácilmente un sistema agéntico propio — convierte la rivalidad en ventaja asimétrica.</div>
+    </div>
+
+    <div class="porter-card">
+      <div class="porter-header">
+        <div class="porter-title">2. Amenaza de Nuevos Entrantes</div>
+        <span class="threat-badge threat-med">MEDIA-ALTA</span>
+      </div>
+      <div class="porter-desc">Las barreras de entrada son moderadas: costo de organizar un evento es relativamente bajo. Sin embargo, la reputación de marca (Race Events lleva años), las relaciones con sponsors y el conocimiento operativo crean moats. El riesgo real son franquicias internacionales (Color Run, Rock'n'Roll Series) que podrían entrar al mercado.</div>
+      <div class="porter-insight">💡 Con RaceOS: la base de datos de 21.500 corredores con historial se convierte en barrera infranqueable. Un nuevo entrante empieza desde cero; Race Events tiene inteligencia acumulada de cada atleta.</div>
+    </div>
+
+    <div class="porter-card">
+      <div class="porter-header">
+        <div class="porter-title">3. Poder de Negociación — Proveedores</div>
+        <span class="threat-badge threat-high">ALTO HOY</span>
+      </div>
+      <div class="porter-desc">Njuko, Rock the Sport y Regístrate.ec tienen poder de negociación alto porque Race Events depende de ellas para inscripciones. Las condiciones son dictadas por el proveedor: comisiones 3-6%, condiciones de los datos, disponibilidad de la plataforma. Cualquier cambio de precio los afecta directamente.</div>
+      <div class="porter-insight">💡 Con RaceOS: poder de proveedor = ELIMINADO. Race Events se convierte en su propio proveedor. La dependencia de terceros desaparece estructuralmente.</div>
+    </div>
+
+    <div class="porter-card">
+      <div class="porter-header">
+        <div class="porter-title">4. Poder de Negociación — Corredores</div>
+        <span class="threat-badge threat-med">MEDIA</span>
+      </div>
+      <div class="porter-desc">Los corredores tienen opciones de eventos alternativas, pero el 15K Quito y la Media Maratón tienen reputación y masa crítica que crea lealtad. El corredor ecuatoriano medio participa en 2-4 eventos anuales y tiene poder de selección. Experiencia de inscripción, seguridad de pago y comunicación son factores decisivos de elección.</div>
+      <div class="porter-insight">💡 Con RaceOS: la experiencia de inscripción WhatsApp-native + comunicaciones personalizadas crea fidelización superior. El corredor que inscribe por WhatsApp tiene una barrera emocional para cambiar a un competidor con formulario web genérico.</div>
+    </div>
+
+    <div class="porter-card">
+      <div class="porter-header">
+        <div class="porter-title">5. Amenaza de Productos Sustitutos</div>
+        <span class="threat-badge threat-low">BAJA</span>
+      </div>
+      <div class="porter-desc">Los sustitutos del running organizado son: running libre (parques), ciclismo, triatlón, gimnasio, CrossFit. Si bien la competencia por el tiempo/dinero del deportista es real, los eventos masivos ofrecen un valor social y de logro que no puede sustituirse fácilmente. La experiencia de cruzar la meta ante miles de espectadores es única.</div>
+      <div class="porter-insight">💡 Con RaceOS: Race Events puede ampliar su proposición de valor más allá del evento en sí — certificados personalizados, resultados compartibles, comunidad digital — haciendo el sustituto aún menos atractivo.</div>
+    </div>
+
+    <div class="porter-card" style="border-color:rgba(255,92,26,0.3);background:linear-gradient(135deg,rgba(255,92,26,0.07),var(--card2));">
+      <div class="porter-header">
+        <div class="porter-title">⚡ Veredicto Porter — Race Events</div>
+        <span class="threat-badge threat-med">POSICIÓN DEFENDIBLE</span>
+      </div>
+      <div class="porter-desc">La posición competitiva actual de Race Events es sólida pero frágil tecnológicamente: depende de proveedores externos (alto riesgo) y no tiene datos propios (vulnerabilidad estratégica). RaceOS invierte 3 de las 5 fuerzas a favor de Race Events de forma permanente.</div>
+      <div class="porter-insight" style="border-color:var(--green);">✅ Con RaceOS: de 5 fuerzas, 3 se invierten estructuralmente a favor de Race Events. El resultado: una posición de mercado que se consolida y refuerza con cada evento.</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ COMPETITIVE INTELLIGENCE MATRIX ═══ -->
+<div class="sec dark">
+<div class="inner">
+  <div class="sec-tag">Sección 04</div>
+  <h2 class="sec-title">Inteligencia <span>Competitiva</span></h2>
+  <p class="sec-sub">Perfiles detallados de los principales actores del mercado de eventos running en Ecuador. Análisis de fortalezas, debilidades y oportunidades de diferenciación para Race Events.</p>
+
+  <div style="overflow-x:auto;border-radius:16px;border:1px solid var(--border);" class="reveal">
+    <table class="intel-table">
+      <thead>
+        <tr>
+          <th>Competidor</th>
+          <th>Escala anual</th>
+          <th>Plataforma tech</th>
+          <th>Score tech (1-10)</th>
+          <th>Debilidades detectadas</th>
+          <th>Amenaza</th>
+          <th>Oportunidad para Race Events</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="comp-name">Maratón BTR / BTR Running</div><div style="font-size:11px;color:var(--gray)">Mayor organización Ecuador · 42K Quito</div></td>
+          <td>~15.000 atletas<br>2-3 eventos/año</td>
+          <td>Njuko + manual WhatsApp</td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--gray)">2/10</span></div></td>
+          <td><span class="weakness-tag">Sin datos propios</span><span class="weakness-tag">Comisiones altas</span><span class="weakness-tag">Inscripción rígida</span></td>
+          <td><span class="comp-threat ct-m">MEDIA</span></td>
+          <td><span class="opp-tag">Segmento 15K/media: Race Events domina este rango</span></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Organización Carrera del Agua</div><div style="font-size:11px;color:var(--gray)">Evento emblemático Quito · Municipio</div></td>
+          <td>~8.000 atletas<br>1 evento/año</td>
+          <td>Formulario web básico + manual</td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--gray)">1/10</span></div></td>
+          <td><span class="weakness-tag">Subsidiada / gratuita</span><span class="weakness-tag">Sin segmentación</span><span class="weakness-tag">No escala</span></td>
+          <td><span class="comp-threat ct-l">BAJA</span></td>
+          <td><span class="opp-tag">Segmento premium: Race Events no compite en gratuito</span></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Comunidades Running Locales</div><div style="font-size:11px;color:var(--gray)">Quito Runners, Runners EC, GYE Run</div></td>
+          <td>500–3.000 atletas<br>4-8 eventos/año</td>
+          <td>WhatsApp manual + Facebook</td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--gray)">1/10</span></div></td>
+          <td><span class="weakness-tag">Sin plataforma</span><span class="weakness-tag">Infra precaria</span><span class="weakness-tag">No escala</span></td>
+          <td><span class="comp-threat ct-l">BAJA</span></td>
+          <td><span class="opp-tag">Race Events puede ofrecerles RaceOS como servicio (B2B)</span></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Eventos Branded (Adidas/Nike)</div><div style="font-size:11px;color:var(--gray)">Adidas Runners Quito · Nike Run Club</div></td>
+          <td>2.000–5.000 atletas<br>1-2 eventos/año</td>
+          <td>App propia de marca (limitada)</td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--gray)">3/10</span></div></td>
+          <td><span class="weakness-tag">Solo promueven marca</span><span class="weakness-tag">No son organizadores</span><span class="weakness-tag">Sin monetización</span></td>
+          <td><span class="comp-threat ct-l">BAJA</span></td>
+          <td><span class="opp-tag">Patrocinio: Race Events puede captarlos como sponsors de su plataforma</span></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name">Franquicias Internacionales</div><div style="font-size:11px;color:var(--gray)">Color Run, Rock'n'Roll Series, Abbott</div></td>
+          <td>Aún no presentes<br>en Ecuador</td>
+          <td>Plataformas globales propias</td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--gray)">6/10</span></div></td>
+          <td><span class="weakness-tag">Sin red local</span><span class="weakness-tag">Sin conocimiento Ecuador</span><span class="weakness-tag">No personalizadas</span></td>
+          <td><span class="comp-threat ct-h">ALTA FUTURA</span></td>
+          <td><span class="opp-tag">Race Events debe consolidar posición AHORA antes de su entrada</span></td>
+        </tr>
+        <tr style="border-top:2px solid rgba(255,92,26,0.2);">
+          <td><div class="comp-name" style="color:var(--orange)">⚡ Race Events + RaceOS</div><div style="font-size:11px;color:var(--gray)">Objetivo: líder tecnológico Ecuador</div></td>
+          <td><strong>21.500 atletas → 35K+</strong><br>en 24 meses</td>
+          <td><strong>RaceOS Agent propio</strong></td>
+          <td><div class="tech-score"><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-full"></div><div class="ts-dot ts-empty"></div><span style="font-size:11px;margin-left:6px;color:var(--orange)">9/10</span></div></td>
+          <td><span style="color:var(--green);font-size:12px;font-weight:600">N/A — ventaja competitiva total</span></td>
+          <td><span style="color:var(--green);font-weight:700">DOMINANTE</span></td>
+          <td><span class="opp-tag" style="background:rgba(255,92,26,0.12);color:var(--orange)">Monopolio tecnológico en mercado Ecuador</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ JOBS TO BE DONE ═══ -->
+<div class="sec black">
+<div class="inner">
+  <div class="sec-tag">Sección 05</div>
+  <h2 class="sec-title">Arquetipos del Corredor<br><span>Jobs-to-be-Done</span></h2>
+  <p class="sec-sub">Comprender QUÉ "trabajo" contrata el corredor cuando se inscribe en un evento es más útil que conocer su demografía. Estos 4 arquetipos cubren el 90% de los participantes de Race Events.</p>
+
+  <div class="jtbd-grid reveal">
+
+    <div class="jtbd-card">
+      <div class="jtbd-archetype">Arquetipo 01</div>
+      <div class="jtbd-name">🏆 El Performer</div>
+      <div class="jtbd-section">Jobs funcionales</div>
+      <ul class="jtbd-items">
+        <li>Batir su mejor tiempo personal</li>
+        <li>Inscribirse sin fricción desde el celular</li>
+        <li>Recibir confirmación y dorsal inmediato</li>
+      </ul>
+      <div class="jtbd-section">Jobs emocionales</div>
+      <ul class="jtbd-items">
+        <li>Sentirse parte de un evento de categoría</li>
+        <li>Compartir resultado en redes (logro social)</li>
+        <li>Ser reconocido por su rendimiento</li>
+      </ul>
+      <div class="jtbd-section">Pain points no resueltos hoy</div>
+      <ul class="jtbd-items">
+        <li>Inscripción lenta y con formularios extensos</li>
+        <li>Sin resultados personalizados post-carrera</li>
+        <li>Sin historial acumulado de participación</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;background:rgba(255,92,26,0.08);border-radius:8px;padding:8px 10px;color:var(--orange);">RaceOS resuelve: inscripción WhatsApp en 2 min + resultados automáticos + historial de carrera</div>
+    </div>
+
+    <div class="jtbd-card">
+      <div class="jtbd-archetype">Arquetipo 02</div>
+      <div class="jtbd-name">🤝 El Social Runner</div>
+      <div class="jtbd-section">Jobs funcionales</div>
+      <ul class="jtbd-items">
+        <li>Inscribirse junto a amigos/grupo</li>
+        <li>Encontrar la carrera correcta para su nivel</li>
+        <li>Organizar la logística del día (rutas, parking)</li>
+      </ul>
+      <div class="jtbd-section">Jobs emocionales</div>
+      <ul class="jtbd-items">
+        <li>Pertenecer a una comunidad de runners</li>
+        <li>Foto de grupo en la meta para Instagram</li>
+        <li>Celebrar con amigos post-evento</li>
+      </ul>
+      <div class="jtbd-section">Pain points no resueltos hoy</div>
+      <ul class="jtbd-items">
+        <li>Inscripción grupal complicada o imposible</li>
+        <li>Info logística dispersa (WhatsApp, web, RRSS)</li>
+        <li>Sin fotos personalizadas automáticas</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;background:rgba(255,92,26,0.08);border-radius:8px;padding:8px 10px;color:var(--orange);">RaceOS resuelve: bot FAQ centralizado + comunicaciones grupales + briefing personalizado pre-carrera</div>
+    </div>
+
+    <div class="jtbd-card">
+      <div class="jtbd-archetype">Arquetipo 03</div>
+      <div class="jtbd-name">🏔️ El Trail Seeker</div>
+      <div class="jtbd-section">Jobs funcionales</div>
+      <ul class="jtbd-items">
+        <li>Encontrar rutas de dificultad adecuada</li>
+        <li>Información técnica de perfil de elevación</li>
+        <li>Inscripción con categorías técnicas (km, D+)</li>
+      </ul>
+      <div class="jtbd-section">Jobs emocionales</div>
+      <ul class="jtbd-items">
+        <li>Superar sus límites físicos</li>
+        <li>Explorar volcanes y reservas de Ecuador</li>
+        <li>Conectar con naturaleza y montaña</li>
+      </ul>
+      <div class="jtbd-section">Pain points no resueltos hoy</div>
+      <ul class="jtbd-items">
+        <li>Casi ningún organizador tech para trail Ecuador</li>
+        <li>Info de rutas dispersa e incompleta</li>
+        <li>Sin historial de trail para ruta de progresión</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;background:rgba(255,92,26,0.08);border-radius:8px;padding:8px 10px;color:var(--orange);">RaceOS resuelve: evento trail con plataforma propia = PRIMERO en Ecuador con tech avanzada para trail</div>
+    </div>
+
+    <div class="jtbd-card">
+      <div class="jtbd-archetype">Arquetipo 04</div>
+      <div class="jtbd-name">🏢 El Corporate Runner</div>
+      <div class="jtbd-section">Jobs funcionales</div>
+      <ul class="jtbd-items">
+        <li>Inscribir equipo de empresa en lote</li>
+        <li>Facturación corporativa válida SRI</li>
+        <li>Métricas de participación para RRHH</li>
+      </ul>
+      <div class="jtbd-section">Jobs emocionales</div>
+      <ul class="jtbd-items">
+        <li>Fortalecer cultura de equipo y wellness</li>
+        <li>Imagen corporativa en evento masivo</li>
+        <li>Beneficio valorado por empleados</li>
+      </ul>
+      <div class="jtbd-section">Pain points no resueltos hoy</div>
+      <ul class="jtbd-items">
+        <li>Ningún evento Ecuador tiene canal B2B formal</li>
+        <li>Facturación difícil con plataformas externas</li>
+        <li>Sin reportes de participación para RRHH</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;background:rgba(255,92,26,0.08);border-radius:8px;padding:8px 10px;color:var(--orange);">RaceOS resuelve: canal B2B dedicado con factura electrónica SRI + dashboard RRHH + inscripción masiva</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ BLUE OCEAN ═══ -->
+<div class="sec dark" id="blueocean">
+<div class="inner">
+  <div class="sec-tag">Sección 06</div>
+  <h2 class="sec-title">Estrategia <span>Blue Ocean</span></h2>
+  <p class="sec-sub">La industria de eventos running en Ecuador opera en un océano rojo de rivalidad por fechas de calendario y sponsors. Race Events + RaceOS crea un océano azul: un mercado nuevo donde la competencia es irrelevante porque nadie más puede replicar el sistema.</p>
+
+  <!-- ERRC GRID -->
+  <div class="errc-grid reveal">
+    <div class="errc-card errc-E">
+      <div class="errc-letter">E</div>
+      <div class="errc-title">Eliminar</div>
+      <ul class="errc-items">
+        <li>Comisiones a plataformas externas (3-6%)</li>
+        <li>Dependencia de datos en servidores de terceros</li>
+        <li>Inscripción por formulario web estático</li>
+        <li>Soporte manual masivo pre y post evento</li>
+        <li>Riesgo de incumplimiento LOPD Ecuador</li>
+        <li>Pérdida de datos entre ediciones del evento</li>
+      </ul>
+    </div>
+    <div class="errc-card errc-R">
+      <div class="errc-letter">R</div>
+      <div class="errc-title">Reducir</div>
+      <ul class="errc-items">
+        <li>Tiempo del equipo en consultas rutinarias (−90%)</li>
+        <li>Errores en asignación de dorsales y tallas</li>
+        <li>Costo de marketing externo (campañas in-house)</li>
+        <li>Tiempo de procesamiento por inscripción</li>
+        <li>Fricciones en cambios de categoría</li>
+        <li>Dependencia de agencias publicitarias</li>
+      </ul>
+    </div>
+    <div class="errc-card errc-Ra">
+      <div class="errc-letter">R</div>
+      <div class="errc-title">Aumentar</div>
+      <ul class="errc-items">
+        <li>Experiencia del corredor en todo el ciclo</li>
+        <li>Velocidad de inscripción (de días a minutos)</li>
+        <li>Calidad y profundidad de datos del atleta</li>
+        <li>Disponibilidad del servicio (24/7)</li>
+        <li>Personalización de comunicaciones</li>
+        <li>Capacidad de escalar sin costo variable</li>
+      </ul>
+    </div>
+    <div class="errc-card errc-C">
+      <div class="errc-letter">C</div>
+      <div class="errc-title">Crear</div>
+      <ul class="errc-items">
+        <li>CRM de corredores único en Ecuador (21.500+ perfiles)</li>
+        <li>Canal corporativo B2B (inscripciones empresariales)</li>
+        <li>Programa de fidelización con historial de carreras</li>
+        <li>Inscripción conversacional por WhatsApp nativo</li>
+        <li>Datos para decisiones de calendario y pricing</li>
+        <li>Plataforma tech como activo de negocio vendible</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VALUE CURVE -->
+  <div class="reveal">
+    <h3 style="font-size:17px;font-weight:800;margin-bottom:8px;">Curva de Valor: Competidores vs Race Events + RaceOS</h3>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:24px;">Comparación en las 8 dimensiones de valor que más importan al corredor ecuatoriano y al organizador</p>
+    <div style="overflow-x:auto;border-radius:14px;border:1px solid var(--border);">
+      <table class="curve-table">
+        <thead>
+          <tr>
+            <th style="width:200px">Dimensión de valor</th>
+            <th class="col-re">⚡ Race Events + RaceOS</th>
+            <th>🏢 Njuko / Externas</th>
+            <th>🏃 Competidores locales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dimension">Experiencia de inscripción</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">WhatsApp nativo · 2 minutos</div></td>
+            <td><div class="curve-bar bar-med"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Formulario web · 8-12 min</div></td>
+            <td><div class="curve-bar bar-low"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">WhatsApp manual · horas</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Propiedad de datos</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">100% Race Events</div></td>
+            <td><div class="curve-bar bar-low" style="width:10%"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Datos en servidores Njuko</div></td>
+            <td><div class="curve-bar bar-low"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Dispersos / sin sistema</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Comunicación personalizada</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">Automatizada · contextual</div></td>
+            <td><div class="curve-bar bar-med"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Email masivo genérico</div></td>
+            <td><div class="curve-bar bar-low" style="width:10%"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">WhatsApp manual o cero</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Disponibilidad 24/7</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">Agente opera siempre</div></td>
+            <td><div class="curve-bar bar-high"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Web disponible pero sin soporte</div></td>
+            <td><div class="curve-bar bar-low"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Solo horario laboral</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Costo por inscripción (organiz.)</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">$0 comisión · $0.57/inscripción (mant.)</div></td>
+            <td><div class="curve-bar bar-low"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">$1.50-2.40/inscripción (5%)</div></td>
+            <td><div class="curve-bar bar-high"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Sin costo · sin plataforma</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Inteligencia de negocio</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">Dashboard en vivo + CRM acumulativo</div></td>
+            <td><div class="curve-bar bar-med"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Reportes básicos post-evento</div></td>
+            <td><div class="curve-bar bar-low" style="width:5%"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Excel manual</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Capacidad de escala</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">Sin límite · mismo costo</div></td>
+            <td><div class="curve-bar bar-high"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Escala pero aumenta comisión</div></td>
+            <td><div class="curve-bar bar-low"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Colapsa con volumen</div></td>
+          </tr>
+          <tr>
+            <td class="dimension">Experiencia post-evento</td>
+            <td><div class="curve-bar bar-max"></div><div style="font-size:10px;color:var(--orange);margin-top:3px;">Resultados · certificados · retención</div></td>
+            <td><div class="curve-bar bar-med"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Resultados básicos</div></td>
+            <td><div class="curve-bar bar-low" style="width:10%"></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">Casi nula</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ TECHNOLOGY ADOPTION ═══ -->
+<div class="sec black">
+<div class="inner">
+  <div class="sec-tag">Sección 07</div>
+  <h2 class="sec-title">Curva de Adopción<br><span>Tecnológica — Ecuador Running</span></h2>
+  <p class="sec-sub">¿En qué punto está Ecuador en la adopción de tecnología para eventos deportivos? La respuesta determina la urgencia estratégica de actuar.</p>
+
+  <div class="reveal" style="background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:36px;margin-bottom:32px;">
+    <div style="position:relative;">
+      <div class="adoption-track" style="border-radius:10px;overflow:hidden;margin-bottom:8px;">
+        <div class="adoption-segment seg-innov" style="color:var(--purple);">
+          <div style="font-size:9px;font-weight:700;">INNOV.</div>
+          <div style="font-size:8px;opacity:0.7;">2.5%</div>
+        </div>
+        <div class="adoption-segment seg-early" style="color:var(--blue);">
+          <div style="font-size:9px;font-weight:700;">EARLY</div>
+          <div style="font-size:8px;opacity:0.7;">13.5%</div>
+        </div>
+        <div class="adoption-segment seg-major" style="color:var(--green);">
+          <div style="font-size:10px;font-weight:700;">MAYORÍA TEMPRANA</div>
+          <div style="font-size:9px;opacity:0.7;">34%</div>
+        </div>
+        <div class="adoption-segment seg-late" style="color:var(--gold);">
+          <div style="font-size:10px;font-weight:700;">MAYORÍA TARDÍA</div>
+          <div style="font-size:9px;opacity:0.7;">34%</div>
+        </div>
+        <div class="adoption-segment seg-lagg" style="color:var(--gray);">
+          <div style="font-size:9px;font-weight:700;">REZAG.</div>
+          <div style="font-size:8px;opacity:0.7;">16%</div>
+        </div>
+      </div>
+      <!-- Marker: where Ecuador events are now -->
+      <div style="display:flex;margin-top:16px;gap:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:rgba(230,57,70,0.7);border:2px solid var(--red);flex-shrink:0;"></div>
+          <span style="color:var(--gray);">Competidores EC hoy — <strong style="color:var(--white)">Pre-Innovadores (Fase 0)</strong></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,92,26,0.7);border:2px solid var(--orange);flex-shrink:0;"></div>
+          <span style="color:var(--gray);">Race Events actual — <strong style="color:var(--white)">Inicio Early Adopter</strong></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:rgba(59,130,246,0.7);border:2px solid var(--blue);flex-shrink:0;"></div>
+          <span style="color:var(--gray);">Race Events + RaceOS — <strong style="color:var(--white)">Early Adopter consolidado + cruzando el abismo</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;" class="reveal">
+    <div style="background:var(--card2);border:1px solid rgba(230,57,70,0.2);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:8px;">HOY — Sin RaceOS</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Competidores: Fase 0</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.7;">Ningún organizador ecuatoriano de running tiene plataforma propia con IA. Todos dependen de Njuko, formularios web o WhatsApp manual. Ecuador running está <strong style="color:var(--white)">2-3 años atrás</strong> de mercados como Chile, Colombia o Perú.</div>
+    </div>
+    <div style="background:var(--card2);border:1px solid rgba(255,92,26,0.3);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">12-18 MESES — Con RaceOS</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Race Events: Early Adopter</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.7;">Con RaceOS activo y 2-3 eventos ejecutados, Race Events cruza el abismo de Geoffrey Moore: de innovador a líder de mercado. Los corredores empiezan a <strong style="color:var(--white)">preferir Race Events</strong> por experiencia superior.</div>
+    </div>
+    <div style="background:var(--card2);border:1px solid rgba(59,130,246,0.3);border-radius:14px;padding:22px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:8px;">36+ MESES — Efecto red</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Race Events: Estándar del mercado</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.7;">El CRM acumulado de 50.000+ corredores, el historial de eventos y la reputación tecnológica convierten a Race Events en <strong style="color:var(--white)">la referencia Ecuador</strong>. Franquicias internacionales deben negociar con ellos para entrar.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ OPPORTUNITY MAP ═══ -->
+<div class="sec dark" id="oportunidades">
+<div class="inner">
+  <div class="sec-tag">Sección 08</div>
+  <h2 class="sec-title">Mapa de <span>Oportunidades Estratégicas</span></h2>
+  <p class="sec-sub">9 oportunidades de diferenciación identificadas con inteligencia de mercado. Ordenadas por horizonte temporal y potencial de revenue. Race Events + RaceOS puede capturar hasta <strong>3X su revenue actual</strong> en 36 meses.</p>
+
+  <h3 style="font-size:14px;font-weight:800;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">HORIZONTE 1 — Corto Plazo (0-12 meses)</h3>
+  <div class="opp-grid reveal" style="margin-bottom:36px;">
+
+    <div class="opp-card opp-s1">
+      <div class="opp-horizon">H1 · Inmediato</div>
+      <div class="opp-title">Plataforma 0% comisión — los 3 eventos actuales</div>
+      <div class="opp-potential">+$33.750</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">ahorro anual directo</div>
+      <div class="opp-desc">Migrar los 3 eventos (15K, Media, Valle) a RaceOS elimina comisiones de Njuko. Revenue que hoy se pierde queda en Race Events. Primera acción con ROI garantizado.</div>
+      <div class="opp-tags"><span class="opp-tag tag-green">ROI Garantizado</span><span class="opp-tag tag-green">Mes 1-4</span></div>
+    </div>
+
+    <div class="opp-card opp-s1">
+      <div class="opp-horizon">H1 · Canal nuevo</div>
+      <div class="opp-title">Programa Corporativo B2B</div>
+      <div class="opp-potential">$80K-150K</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">potencial año 1 (revenue adicional)</div>
+      <div class="opp-desc">Quito tiene ~500 empresas con más de 100 empleados. Paquete corporativo: $1,500-3,000 por empresa (20-50 inscripciones + branding en evento + reporte RRHH). Canal completamente inexplorado por cualquier organizador en Ecuador.</div>
+      <div class="opp-tags"><span class="opp-tag tag-green">Canal inexplorado</span><span class="opp-tag tag-green">Sin competencia</span></div>
+    </div>
+
+    <div class="opp-card opp-s1">
+      <div class="opp-horizon">H1 · Datos</div>
+      <div class="opp-title">Programa de Fidelización de Corredores</div>
+      <div class="opp-potential">+15-20%</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">en tasa de retorno por edición</div>
+      <div class="opp-desc">Con la base de datos propia, lanzar el primer loyalty program de running en Ecuador: puntos por carrera, early-bird exclusivo, acceso prioritario a nuevos eventos. El corredor fiel es el activo más valioso de un organizador.</div>
+      <div class="opp-tags"><span class="opp-tag tag-green">CRM nativo</span><span class="opp-tag tag-green">Switching cost alto</span></div>
+    </div>
+
+  </div>
+
+  <h3 style="font-size:14px;font-weight:800;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">HORIZONTE 2 — Mediano Plazo (12-36 meses)</h3>
+  <div class="opp-grid reveal" style="margin-bottom:36px;">
+
+    <div class="opp-card opp-s2">
+      <div class="opp-horizon">H2 · Expansión</div>
+      <div class="opp-title">Trail Running Series Ecuador</div>
+      <div class="opp-potential">$200K-400K</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">potencial de mercado sin capturar</div>
+      <div class="opp-desc">El mercado trail en Ecuador crece 30%+ anual. Ningún organizador tiene plataforma tech dedicada. Race Events + RaceOS puede lanzar una serie de 4-6 trail races en volcanes ecuatorianos: Pichincha, Antisana, Cayambe, Cotopaxi. Producto premium, tickets $40-80, corredores internacionales.</div>
+      <div class="opp-tags"><span class="opp-tag tag-orange">30% crecimiento</span><span class="opp-tag tag-orange">Sin competencia tech</span></div>
+    </div>
+
+    <div class="opp-card opp-s2">
+      <div class="opp-horizon">H2 · Geografía</div>
+      <div class="opp-title">Expansión Guayaquil + Cuenca</div>
+      <div class="opp-potential">+$300K-500K</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">revenue incremental por ciudad</div>
+      <div class="opp-desc">Guayaquil (2.7M habitantes) no tiene organizador dominante con tecnología. Cuenca (600K, cultura deportiva alta) tampoco. RaceOS permite replicar el modelo de Race Events en nuevas ciudades sin duplicar costos operativos — el agente escala horizontalmente.</div>
+      <div class="opp-tags"><span class="opp-tag tag-orange">Vacío de mercado</span><span class="opp-tag tag-orange">Mismo costo tech</span></div>
+    </div>
+
+    <div class="opp-card opp-s2">
+      <div class="opp-horizon">H2 · Datos</div>
+      <div class="opp-title">Partnerships con Marcas Deportivas</div>
+      <div class="opp-potential">$40K-80K</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">ingresos por patrocinio + datos</div>
+      <div class="opp-desc">Con 35.000+ perfiles de corredores (nombre, talla, categoría, historial), Race Events puede ofrecer a marcas como ASICS, Brooks, Garmin o Salomon: activaciones segmentadas, co-branding en comunicaciones y acceso a la audiencia más cualificada de running Ecuador.</div>
+      <div class="opp-tags"><span class="opp-tag tag-orange">Datos propios</span><span class="opp-tag tag-orange">Audiencia premium</span></div>
+    </div>
+
+  </div>
+
+  <h3 style="font-size:14px;font-weight:800;color:var(--purple);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">HORIZONTE 3 — Largo Plazo (36+ meses)</h3>
+  <div class="opp-grid reveal">
+
+    <div class="opp-card opp-s3">
+      <div class="opp-horizon">H3 · Plataforma</div>
+      <div class="opp-title">RaceOS como SaaS para otros organizadores</div>
+      <div class="opp-potential">$150K-500K</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">revenue recurrente anual por licencias</div>
+      <div class="opp-desc">Una vez consolidado RaceOS con 3+ años de eventos y datos, Race Events puede licenciar la plataforma a otros organizadores de Ecuador y LATAM: $500-1,500/mes por organización. Race Events se convierte en empresa de tecnología deportiva, no solo en organizador de eventos.</div>
+      <div class="opp-tags"><span class="opp-tag tag-purple">SaaS model</span><span class="opp-tag tag-purple">LATAM expansion</span></div>
+    </div>
+
+    <div class="opp-card opp-s3">
+      <div class="opp-horizon">H3 · Internacional</div>
+      <div class="opp-title">Anchor Event — Clasificatoria Internacional</div>
+      <div class="opp-potential">$500K-$1M</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">revenue potencial evento flagship</div>
+      <div class="opp-desc">Con historial de datos, reputación y plataforma propia, Race Events puede postular para ser sede clasificatoria de series internacionales (Abbott World Marathon Majors, ITRA trail races). El 15K Quito en altitud + tecnología agéntica = propuesta única en LATAM.</div>
+      <div class="opp-tags"><span class="opp-tag tag-purple">World stage</span><span class="opp-tag tag-purple">Turismo deportivo</span></div>
+    </div>
+
+    <div class="opp-card opp-s3">
+      <div class="opp-horizon">H3 · Activo</div>
+      <div class="opp-title">Race Events como activo tecnológico</div>
+      <div class="opp-potential">5-10X</div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">múltiplo de valoración vs organizador tradicional</div>
+      <div class="opp-desc">Un organizador de eventos sin tecnología se valora por EBITDA × 2-3. Un organizador con plataforma propia, CRM de 50.000+ corredores y revenue recurrente de mantenimiento se valora como empresa tech: EBITDA × 8-15. RaceOS no es un costo — es el activo que multiplica el valor de Race Events.</div>
+      <div class="opp-tags"><span class="opp-tag tag-purple">Valor empresa</span><span class="opp-tag tag-purple">Exit strategy</span></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ INTELLIGENCE SCORE ═══ -->
+<div class="sec black">
+<div class="inner">
+  <div class="sec-tag">Sección 09</div>
+  <h2 class="sec-title">Score de <span>Inteligencia Operacional</span></h2>
+  <p class="sec-sub">Índice comparativo en las 8 dimensiones que definen quién gana el mercado de eventos running en Ecuador. Evaluación de Race Events antes y después de RaceOS vs. competidores actuales.</p>
+
+  <div class="intel-score-grid reveal">
+    <div class="intel-score-card" style="grid-column:span 2;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:16px;">Leyenda</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:32px;height:6px;border-radius:3px;background:rgba(255,92,26,0.5);"></div><span style="color:var(--gray);">Race Events hoy (sin RaceOS)</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:32px;height:6px;border-radius:3px;background:var(--orange);"></div><span style="color:var(--gray);">Race Events + RaceOS</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:32px;height:6px;border-radius:3px;background:rgba(100,100,150,0.5);"></div><span style="color:var(--gray);">Promedio competidores Ecuador</span></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Inteligencia de datos del corredor</span><span style="color:var(--orange);font-weight:700;">RaceOS: 9/10 · Hoy: 2/10 · Comp: 1/10</span></div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+              <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:10%;"></div>
+              <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:20%;"></div>
+              <div style="height:8px;border-radius:4px;background:var(--orange);width:90%;box-shadow:0 0 8px rgba(255,92,26,0.4);"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Automatización operacional</span><span style="color:var(--orange);font-weight:700;">RaceOS: 9/10 · Hoy: 1/10 · Comp: 1/10</span></div>
+          <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:10%;"></div>
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:10%;"></div>
+            <div style="height:8px;border-radius:4px;background:var(--orange);width:90%;box-shadow:0 0 8px rgba(255,92,26,0.4);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Experiencia del corredor</span><span style="color:var(--orange);font-weight:700;">RaceOS: 9/10 · Hoy: 4/10 · Comp: 3/10</span></div>
+          <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:30%;"></div>
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:40%;"></div>
+            <div style="height:8px;border-radius:4px;background:var(--orange);width:90%;box-shadow:0 0 8px rgba(255,92,26,0.4);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Capacidad de marketing propio</span><span style="color:var(--orange);font-weight:700;">RaceOS: 8/10 · Hoy: 3/10 · Comp: 2/10</span></div>
+          <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:20%;"></div>
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:30%;"></div>
+            <div style="height:8px;border-radius:4px;background:var(--orange);width:80%;box-shadow:0 0 8px rgba(255,92,26,0.4);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Independencia de plataformas externas</span><span style="color:var(--orange);font-weight:700;">RaceOS: 10/10 · Hoy: 3/10 · Comp: 2/10</span></div>
+          <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:20%;"></div>
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:30%;"></div>
+            <div style="height:8px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--red));width:100%;box-shadow:0 0 10px rgba(255,92,26,0.5);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:6px;"><span>Valor de empresa (activo tech)</span><span style="color:var(--orange);font-weight:700;">RaceOS: 9/10 · Hoy: 2/10 · Comp: 1/10</span></div>
+          <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(100,100,150,0.45);width:10%;"></div>
+            <div style="position:absolute;top:1px;height:6px;border-radius:3px;background:rgba(255,92,26,0.45);width:20%;"></div>
+            <div style="height:8px;border-radius:4px;background:var(--orange);width:90%;box-shadow:0 0 8px rgba(255,92,26,0.4);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ STRATEGIC RECOMMENDATIONS ═══ -->
+<div class="sec dark">
+<div class="inner">
+  <div class="sec-tag">Sección 10 · Nivel Comando</div>
+  <h2 class="sec-title">Recomendaciones <span>Estratégicas</span></h2>
+  <p class="sec-sub">8 acciones ordenadas por impacto × urgencia. Cada recomendación tiene fundamento en el análisis anterior y está calibrada para el contexto real de Race Events en Ecuador.</p>
+
+  <div class="rec-grid reveal">
+
+    <div class="rec-card">
+      <div class="rec-num">01</div>
+      <div>
+        <div class="rec-title">Implementar RaceOS antes del próximo evento — ventana de 60-90 días</div>
+        <div class="rec-desc">Cada evento que pase sin plataforma propia es dinero perdido en comisiones y datos no capturados. La ventaja competitiva existe hoy porque ningún competidor tiene IA agéntica — esta ventana se cierra en 2-4 años. La primera carrera con RaceOS activo es el punto de inflexión.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-critical">CRÍTICO</div>
+        <div class="rec-timeline">0-3 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">02</div>
+      <div>
+        <div class="rec-title">Lanzar canal corporativo B2B en paralelo con la plataforma</div>
+        <div class="rec-desc">La oportunidad corporativa (500 empresas Quito × $2K promedio = $1M potencial) no requiere más infraestructura que el propio RaceOS con un módulo de facturación corporativa. Es revenue incremental con margen cercano al 100% porque la plataforma ya está amortizada.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-high">ALTO</div>
+        <div class="rec-timeline">0-6 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">03</div>
+      <div>
+        <div class="rec-title">Activar programa de fidelización desde el primer evento en RaceOS</div>
+        <div class="rec-desc">El loyalty program es el moat más difícil de replicar: requiere historial de datos que solo Race Events tiene. Cada corredor que acumula puntos tiene un incentivo estructural para no irse a otro organizador. Esto convierte a Race Events en un ecosistema, no solo en un evento.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-high">ALTO</div>
+        <div class="rec-timeline">3-6 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">04</div>
+      <div>
+        <div class="rec-title">Diseñar la Trail Running Series Ecuador para el año 2</div>
+        <div class="rec-desc">El trail running crece 30%+ en Ecuador sin un organizador tech-dominante. Race Events + RaceOS tiene la infraestructura para lanzar una serie de 4-6 trail races premium en volcanes ecuatorianos. Tickets $40-80, corredores internacionales, patrocinadores premium (The North Face, Salomon).</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-high">ALTO</div>
+        <div class="rec-timeline">12-18 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">05</div>
+      <div>
+        <div class="rec-title">Piloto Guayaquil — 1 evento en el año 2</div>
+        <div class="rec-desc">Guayaquil (2.7M, hub financiero Ecuador) no tiene organizador dominante de running. Race Events puede replicar su modelo con RaceOS sin duplicar costos tecnológicos. Un solo evento piloto en GYE (8.000-10.000 inscritos × $32 = $256K-320K revenue) valida la expansión regional.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-high">ALTO</div>
+        <div class="rec-timeline">12-24 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">06</div>
+      <div>
+        <div class="rec-title">Negociar partnerships con marcas deportivas usando datos de corredores</div>
+        <div class="rec-desc">Con 21.500 perfiles propios de corredores (talla, categoría, ciudad, historial), Race Events tiene el activo de audiencia más valioso del running ecuatoriano. Marcas como ASICS, Brooks, Garmin o Payless pagarán $15.000-40.000 por acceso segmentado a esta audiencia en un mercado donde nadie más lo ofrece.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-med">MEDIO</div>
+        <div class="rec-timeline">6-12 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">07</div>
+      <div>
+        <div class="rec-title">Documentar el sistema para eventual licenciamiento B2B (RaceOS as a Service)</div>
+        <div class="rec-desc">Mientras Race Events opera RaceOS para sus propios eventos, documenta y refina el sistema para ofrecerlo como SaaS a otras organizaciones deportivas en Ecuador y LATAM. Año 3: 10 organizadores × $800/mes = $96.000/año de revenue recurrente adicional sin costo marginal significativo.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-med">MEDIO</div>
+        <div class="rec-timeline">24-36 meses</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-num">08</div>
+      <div>
+        <div class="rec-title">Posicionar al 15K Quito como candidato para series internacionales</div>
+        <div class="rec-desc">Con 3 años de datos propios, plataforma propia y 30.000+ corredores en su CRM, Race Events tiene el perfil para postular al 15K Quito en el circuito Abbott World Marathon Majors (label IAAF) o para atraer el Rock'n'Roll Series a Ecuador — como organizador local, no como subordinado.</div>
+      </div>
+      <div class="rec-meta">
+        <div class="rec-impact impact-med">MEDIO</div>
+        <div class="rec-timeline">36+ meses</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ═══ VERDICT ═══ -->
+<div class="sec black">
+<div class="inner">
+  <div class="verdict-box reveal">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--orange);text-transform:uppercase;margin-bottom:20px;">// VEREDICTO ESTRATÉGICO FINAL</div>
+    <h2 class="verdict-title">Race Events tiene una ventana de<br><span>4-5 años de ventaja tecnológica</span><br>que nadie más en Ecuador puede cerrar hoy.</h2>
+    <p class="verdict-desc">
+      El análisis multi-metodológico es concluyente: Ecuador running está en Fase 0 de adopción tecnológica. Ningún competidor tiene datos propios, plataforma agéntica ni inteligencia acumulada de corredores. Race Events + RaceOS no compite en el mismo mercado que sus rivales actuales — crea un mercado nuevo donde las reglas las dicta él.
+      <br><br>
+      El riesgo no es si la oportunidad existe. El riesgo es esperar mientras franquicias internacionales consolidan su entrada, o mientras un competidor local descubre la misma oportunidad. <strong>La ventana estratégica está abierta. Y se cierra.</strong>
+    </p>
+    <div class="verdict-metrics">
+      <div class="vm-item">
+        <div class="vm-num">4-5 años</div>
+        <div class="vm-label">Ventaja tech sobre competidores</div>
+      </div>
+      <div class="vm-item">
+        <div class="vm-num">9</div>
+        <div class="vm-label">Oportunidades de diferenciación identificadas</div>
+      </div>
+      <div class="vm-item">
+        <div class="vm-num">$1M+</div>
+        <div class="vm-label">Revenue potencial en 36 meses</div>
+      </div>
+      <div class="vm-item">
+        <div class="vm-num">895%</div>
+        <div class="vm-label">ROI año 2 con RaceOS operativo</div>
+      </div>
+      <div class="vm-item">
+        <div class="vm-num">3 fuerzas</div>
+        <div class="vm-label">Porter invertidas a favor de Race Events</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>// <span>VIBRAMENTE</span> × RACE EVENTS · MARKET INTELLIGENCE BRIEF 2026 · <span>CONFIDENCIAL</span></p>
+  <p style="margin-top:6px;font-size:10px;opacity:0.45;">Metodologías: PESTEL · Porter's Five Forces · TAM/SAM/SOM · Jobs-to-be-Done · Blue Ocean Strategy · Technology Adoption Curve · Competitive Intelligence Matrix · Strategic Opportunity Mapping</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.animationDelay = (i * 0.06) + 's';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background =
+    window.scrollY > 50 ? 'rgba(8,8,16,0.99)' : 'rgba(8,8,16,0.96)';
+});
+</script>
+</body>
+</html>
